@@ -133,7 +133,6 @@ class Plugin_replace extends Plugin {
     return $str;
   }
 
-  /*
   public function words() {
     $limit  = $this->fetchParam('limit', null);
     $ending = $this->fetchParam('ending', '...');
@@ -148,6 +147,6 @@ class Plugin_replace extends Plugin {
       $this->content =  substr($this->content, 0, $last_word[1] + strlen($last_word[0])) . $ending;
     }
     return $this->content;
-  }*/
+  }
     
 }
