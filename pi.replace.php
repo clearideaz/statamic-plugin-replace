@@ -12,14 +12,14 @@ class Plugin_replace extends Plugin {
   );
 
   public function index() {
-    $caseinsens       = ($this->fetch_param('casesensitive') == 'no');
-    //$multiple         = ($this->fetch_param('multiple') == 'yes');
-    $regex            = ($this->fetch_param('regex') == 'yes');
-    $flags            = $this->fetch_param('flags');
-    $needle           = $this->fetch_param('find');
-    $replace          = $this->fetch_param('replace');
+    $caseinsens       = ($this->fetchParam('casesensitive') == 'no');
+    //$multiple         = ($this->fetchParam('multiple') == 'yes');
+    $regex            = ($this->fetchParam('regex') == 'yes');
+    $flags            = $this->fetchParam('flags');
+    $needle           = $this->fetchParam('find');
+    $replace          = $this->fetchParam('replace');
 
-    $this->content = $this->parser->parse($this->content, Statamic_View::$_dataStore, 'Statamic_View::callback');
+    $this->content = Parse::template($this->content, Statamic_View::$_dataStore, 'Statamic_View::callback');
 
     $haystack = $this->content;
 
@@ -135,10 +135,10 @@ class Plugin_replace extends Plugin {
 
   /*
   public function words() {
-    $limit  = $this->fetch_param('limit', null);
-    $ending = $this->fetch_param('ending', '...');
+    $limit  = $this->fetchParam('limit', null);
+    $ending = $this->fetchParam('ending', '...');
 
-    $this->content = $this->parser->parse($this->content, Statamic_View::$_dataStore, 'Statamic_View::callback');
+    $this->content = Parse::template($this->content, Statamic_View::$_dataStore, 'Statamic_View::callback');
 
     $words = preg_split("/[\n\r\t ]+/", $this->content, $limit + 1, PREG_SPLIT_NO_EMPTY|PREG_SPLIT_OFFSET_CAPTURE);
     if (count($words) > $limit) {
